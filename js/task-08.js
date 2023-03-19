@@ -21,4 +21,24 @@
 Для доступу до елементів форми використовуй властивість elements.
 5. Виведи об'єкт із введеними даними в консоль і очисти значення полів форми методом reset. */
 
+const form = document.querySelector(".login-form");
 
+form.addEventListener("submit", onFormSubmit);
+
+function onFormSubmit(event) {
+  event.preventDefault();
+
+  const formElements = event.currentTarget.elements;
+  // console.log(event.currentTarget.elements); /* Виводить на екран всі елементи форми */
+
+  if (formElements.email.value === "" || formElements.password.value === "") {
+    alert("Всі поля не заповнені");
+  } else {
+    const formData = new FormData(event.currentTarget);
+    formData.forEach((value, name) => {
+      console.log("Значення value - ", value);
+      console.log("Значення name - ", name);
+      form.reset();
+    });
+  }
+}
