@@ -27,18 +27,17 @@ form.addEventListener("submit", onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
-
+  const {
+    elements: { email, password },
+  } = event.currentTarget;
   const formElements = event.currentTarget.elements;
   // console.log(event.currentTarget.elements); /* Виводить на екран всі елементи форми */
 
-  if (formElements.email.value === "" || formElements.password.value === "") {
+  if (email.value === "" || password.value === "") {
     alert("Всі поля не заповнені");
   } else {
-    const formData = new FormData(event.currentTarget);
-    formData.forEach((value, name) => {
-      console.log("Значення value - ", value);
-      console.log("Значення name - ", name);
-      form.reset();
-    });
+    console.log("Email - ", email.value);
+    console.log("Password - ", password.value);
+    form.reset();
   }
 }
